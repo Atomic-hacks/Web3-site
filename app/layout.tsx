@@ -15,7 +15,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Your Web3 Project",
+  title: "Shillix",
   description: "Join the waitlist for the future of Web3.",
 };
 
@@ -24,6 +24,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${orbitron.variable} ${jetBrainsMono.variable}`}>
+     
+        <link rel="icon" href="/logo.jpg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+     
       <body className="antialiased bg-black text-white">
         {children}
       </body>
