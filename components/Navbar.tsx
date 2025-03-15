@@ -7,22 +7,49 @@ import ShimmerButton from "./ui/ShimmerButton";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [activeLink, setActiveLink] = useState("/");
+  const [activeLink, setActiveLink] = useState("#"); // Changed from "/" to "#"
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Roadmap", path: "/roadmap" },
-    { name: "FAQ", path: "/faq" },
+    { name: "Home", path: "#" },
+    { name: "About", path: "#about" },
+    { name: "Roadmap", path: "#roadmap" },
+    { name: "FAQ", path: "#faq" },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       setScrollPosition(window.scrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, targetId: React.SetStateAction<string>) => {
+    e.preventDefault();
+    
+   
+    if (targetId === "#") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      setActiveLink(targetId);
+      setIsMenuOpen(false);
+      return;
+    }
+    
+    const targetElement = document.querySelector(targetId as string);
+
+    if (targetElement) {
+      window.scrollTo({
+        top: (targetElement as HTMLElement).offsetTop - 50, 
+        behavior: "smooth",
+      });
+      setActiveLink(targetId);
+      setIsMenuOpen(false); 
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -74,10 +101,7 @@ const Navbar = () => {
                       ? "text-sky-500"
                       : "text-gray-900 hover:text-gray-700"
                   }`}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setActiveLink(link.path);
-                  }}
+                  onClick={(e) => handleSmoothScroll(e, link.path)}
                 >
                   {link.name}
                   {activeLink === link.path && (
@@ -145,11 +169,7 @@ const Navbar = () => {
                           ? "text-sky-800 bg-white/30"
                           : "text-neutral-700 hover:bg-white/5 hover:text-white"
                       }`}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        setActiveLink(link.path);
-                        setIsMenuOpen(false);
-                      }}
+                      onClick={(e) => handleSmoothScroll(e, link.path)}
                     >
                       {link.name}
                       {activeLink === link.path && (

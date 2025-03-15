@@ -234,8 +234,8 @@ export function ShillXRoadmapTimeline() {
   ];
   
   return (
-    <div className="w-full">
-      <Timeline data={roadmapData} />
+    <div className="w-full" id="roadmap">
+      <Timeline data={roadmapData}  />
     </div>
   );
 }

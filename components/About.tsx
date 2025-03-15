@@ -159,15 +159,15 @@ const AboutSection: React.FC<AboutSectionProps> = ({
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Stats change timing
+   
     const interval = setInterval(() => {
-      setIsVisible(false); // Trigger exit animation
+      setIsVisible(false); 
 
       setTimeout(() => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % statSets.length);
-        setIsVisible(true); // Trigger entry animation
-      }, 800); // Time to wait for exit animation
-    }, 4000); // Total time each set of stats stays
+        setIsVisible(true); 
+      }, 800); 
+    }, 4000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -204,7 +204,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
         </motion.div>
       </section>
 
-      {/* Mission section - improved spacing and grid layout */}
+      
       <section className="relative py-12 md:py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <motion.div
@@ -582,7 +582,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
       </section>
 
       {/* FAQ section */}
-      <section className="relative py-12 md:py-16 px-4 sm:px-6 lg:px-8 ">
+      <section className="relative py-12 md:py-16 px-4 sm:px-6 lg:px-8 " id="faq">
         <div className="max-w-4xl mx-auto">
           <motion.div
             className="text-center mb-8 md:mb-12"
@@ -712,7 +712,7 @@ const AboutSection: React.FC<AboutSectionProps> = ({
       </section>
 
       {/* Footer */}
-      <footer className="relative py-8 md:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#c3e5f5] to-white">
+      <footer className="relative py-8 md:py-10 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#c4e2fd] to-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center md:items-start">
